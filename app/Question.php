@@ -20,7 +20,16 @@ class Question extends Model
         $this->attributes['slug']  = Str::slug($value);
     }    
 
-    // Accesores
+
+    // Relaciones ....................................
+    public function answers ()
+    {
+        return $this->hasMany(Answer::class);
+        // $question->answers()->count();
+        // foreach($question->answers() as $answer)
+    }
+
+    // Accesores .....................................
     public function getUrlAttribute ()
     {
         // return route("questions.show", $this->id);
@@ -34,7 +43,7 @@ class Question extends Model
 
     public function getStatusAttribute () 
     {
-        if ($this->answers > 0) {
+        if ($this->answers_count > 0) {
             if ($this->best_answer_id) {
                 return "answered-accepted";
             }
