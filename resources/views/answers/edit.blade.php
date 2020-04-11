@@ -14,7 +14,7 @@
                         @method('PATCH')
                         <div class="form-group">
                             <textarea class="form-control {{ $errors->has('body') ? 'is-invalid' : '' }}" name="body" rows="7">
-                                {{ old('body', $question->body) }}
+                                {{ old('body', trim($answer->body)) }}
                             </textarea>
                             @if($errors->has('body'))                            
                                 <div class="invalid-feedback">
